@@ -1,0 +1,121 @@
+.Number {
+	flex-basis: 10vw;
+	line-height: 1px;
+	text-align: center;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+
+	/*color: #EEE;*/
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-size: 3em;
+	color: #6e6e6e;
+}
+
+.Number.current {
+	color: green;
+}
+.Number.issued {
+	color: cadetblue;
+}
+
+.Number.issued.current {
+	color: white;
+	background-color: blueviolet;
+	font-size: 3em;
+}
+
+.Number.marker {
+	width: 570px;
+	flex-basis: 30vw;
+	background: white;
+	padding: 5px;
+	border: none;
+	height: 20px;
+	font-size: 12em;
+	font-weight: bold;
+	color: #424244;
+	box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}
+
+.Number.hidden {
+	visibility: hidden;
+}
+
+.issuedNumber {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.issuedNumber span {
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 30px 6px;
+	font-weight: 900;
+	font-size: 10em;
+	padding: 2vh 2vw;
+	min-width: 50vw;
+	text-align: center;
+	border-radius: 10px;
+	/* border: 30px solid white; */
+}
+
+.issuedNumber--visible {
+	visibility: visible;
+	transition: visibility 0.3s ease 1.8s;
+}
+
+.App[data-serie="0"] .issuedNumber {
+	background-color: #0070ce;
+}
+
+.App[data-serie="1"] .issuedNumber {
+	background-color: #53aee3;
+}
+
+.App[data-serie="2"] .issuedNumber {
+	background-color: #75c482;
+}
+
+.App[data-serie="3"] .issuedNumber {
+	background-color: #f8ef3c;
+}
+
+.App[data-serie="4"] .issuedNumber {
+	background-color: #ff9900;
+}
+
+.App[data-serie="5"] .issuedNumber {
+	background-color: #ef5e67;
+}
+
+.App[data-serie="6"] .issuedNumber {
+	background-color: #c05aa3;
+}
+
+.App[data-serie="7"] .issuedNumber {
+	background-color: #eaa3b3;
+}
+
+@media (orientation: landscape) and (max-width: 740px) {
+	.Number {
+		font-size: 2em;
+	}
+
+	.Number.marker {
+		width: 130px;
+		flex-basis: 16vw;
+		font-size: 4em;
+	}
+}
