@@ -13,31 +13,18 @@ export default function Number({
 	let currentPosition = pos + offset;
 	const number = wheelNumbers[currentPosition];
 
-	// const [slice, setSlice] = React.useState(7);
-	// const [dot, setDot] = React.useState("···");
-
-	// React.useEffect(() => {
-	// 	let timeout_1 = setTimeout(() => {
-	// 		setSlice((slice) => slice + 1);
-	// 		setDot((dot) => dot.slice(0, -1));
-	// 	}, 15000);
-	// 	let timeout_2 = setTimeout(() => {
-	// 		setSlice((slice) => slice + 1);
-	// 		setDot((dot) => dot.slice(0, -1));
-	// 	}, 17000);
-	// 	return () => {
-	// 		clearTimeout(timeout_1);
-	// 		clearTimeout(timeout_2);
-	// 	};
-	// }, []);
-
-	if (slice <= 0) slice = -10;
+	if (slice <= 0) slice = -15;
 	else if (slice > 3) slice = 3;
 
 	return (
-		<div className={cn}>
+		<div
+			// style={{ fontSize: "10em" }}
+			className={cn}>
 			{number
-				? `${number.slice(0, -slice)}${"···".slice(3 - slice, 3)}`
+				? `${number.slice(0, 4)} ${number.slice(4, 7)} ${number.slice(
+						7,
+						number.length - slice
+				  )}${"···".slice(3 - slice, 3)}`
 				: number}
 		</div>
 	);

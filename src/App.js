@@ -11,21 +11,13 @@ import "./App.css";
 function shuffle(originalArray) {
 	let array = originalArray.slice();
 	let counter = array.length;
-
-	// While there are elements in the array
 	while (counter > 0) {
-		// Pick a random index
 		let index = Math.floor(Math.random() * counter);
-
-		// Decrease counter by 1
 		counter--;
-
-		// And swap the last element with it
 		let temp = array[counter];
 		array[counter] = array[index];
 		array[index] = temp;
 	}
-
 	return array;
 }
 
@@ -59,8 +51,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		// window.addEventListener("keydown", this.onKeyDown.bind(this));
-		// window.addEventListener("dblclick", this.onDblClick.bind(this));
 		this.animate();
 	}
 
@@ -69,7 +59,17 @@ class App extends Component {
 	}
 
 	generateTurnsNumbers(numbers) {
-		return numbers.concat(numbers, numbers, numbers, numbers, numbers);
+		return numbers.concat(
+			numbers,
+			numbers,
+			numbers,
+			numbers,
+			numbers,
+			numbers,
+			numbers,
+			numbers,
+			numbers
+		);
 	}
 
 	reset() {
@@ -96,35 +96,16 @@ class App extends Component {
 		});
 	}
 
-	/**
-	 *
-	 * This function update the color series changing the background color, and resetting the numbers
-	 *
-	 * @memberof App
-	 */
-	changeSeries() {
-		this.reset().then(() => {
-			// Update background color by array definition
-
-			let next = this.state.series + 1;
-			if (next > 7) {
-				next = 0;
-			}
-			this.setState({
-				series: next,
-			});
-		});
-	}
-
 	listPhoneNumbers = ["0839660056", "0899466183", "0396171265"];
 
 	start() {
 		this.setState({
 			isShown: false,
+			currentPos: 0,
 			slice: 3,
 			// turnNumbers: this.generateTurnsNumbers(this.state.numbers),
 		});
-		const extractionDuration = 18000;
+		const extractionDuration = 20000;
 		if (this.state.animating) return;
 
 		const numbersLength = this.state.numbers.length;
@@ -149,7 +130,7 @@ class App extends Component {
 
 		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
 		if (index !== randomNumber && index >= 0) {
-			// randomNumber = index + numbersLength * 5;
+			randomNumber = index + numbersLength * 9;
 		}
 
 		const shouldIssue =
@@ -176,7 +157,7 @@ class App extends Component {
 		let lastDelta = 0;
 
 		this.t.onUpdate(function (delta) {
-			let currentPos = Math.floor(this.pos) % (numbersLength * 6);
+			let currentPos = Math.floor(this.pos) % (numbersLength * 10);
 
 			if (
 				(lastPos === null || lastPos !== currentPos) &&
@@ -200,10 +181,6 @@ class App extends Component {
 					lastIssuedNumber: randomNumber,
 					resultNumber: this.state.turnNumbers[this.state.currentPos],
 				});
-
-				// console.log("turn", this.state.turnNumbers);
-				// console.log("numbers", this.state.numbers);
-				// console.log("result", this.state.resultNumber, this.state.currentPos);
 
 				if (shouldIssue !== this.state.turnNumbers[this.state.currentPos]) {
 					console.error(
@@ -264,6 +241,7 @@ class App extends Component {
 				jsConfetti.addConfetti();
 				this.setState({
 					isShown: true,
+					currentPos: 0,
 				});
 			}, 6100);
 		});
@@ -430,6 +408,7 @@ class App extends Component {
 								onBlur={(e) => {
 									let temp = e.target.value
 										.trim()
+										.replace(/ /g, "")
 										.split("\n")
 										.map((n) => n);
 									this.setState({
@@ -460,8 +439,6 @@ class App extends Component {
 						</span>
 					) : (
 						<div className="numbers">
-							{/*{ this.state.currentPos }*/}
-							{/*{ this.state.wheelNumbers.map(n => <Number key={n} number={n} />)}*/}
 							<Number
 								className={`${this.state.showResult ? "hidden" : "hidden"}`}
 								pos={this.state.currentPos}
@@ -612,7 +589,10 @@ class App extends Component {
 								<span>
 									{this.state.resultNumber.slice(0, 4)}{" "}
 									{this.state.resultNumber.slice(4, 7)}{" "}
-									{this.state.resultNumber.slice(7, 10)}
+									{this.state.resultNumber.slice(
+										7,
+										this.state.resultNumber.length
+									)}
 								</span>
 							</div>
 							<button

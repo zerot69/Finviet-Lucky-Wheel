@@ -17,6 +17,9 @@
 .App[data-serie="0"] {
 	background-color: #ffe7ab;
 	background-image: url("../public/bg-1.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .App[data-serie="1"] {
@@ -103,7 +106,7 @@
 
 	animation: wheelRotationStart 4s ease-in, wheelRotationStart 2s linear 4s,
 		wheelRotationStart 4s cubic-bezier(0.5, 0.99, 0.9, 1) 18s;
-	animation-iteration-count: 1, 7, 1;
+	animation-iteration-count: 1, 8, 1;
 }
 
 @keyframes wheelRotationStart {
