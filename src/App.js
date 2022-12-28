@@ -54,6 +54,8 @@ class App extends Component {
 
 		this.animate = this.animate.bind(this);
 		this.audio = new Audio(song);
+		this.audio.loop = true;
+		this.audio.volume = 0.5;
 	}
 
 	componentDidMount() {
@@ -61,31 +63,6 @@ class App extends Component {
 		// window.addEventListener("dblclick", this.onDblClick.bind(this));
 		this.animate();
 	}
-
-	// onKeyDown(e) {
-	// 	e.preventDefault();
-	// 	// start|stop on [space]
-
-	// 	switch (e.keyCode) {
-	// 		case 32:
-	// 			e.preventDefault();
-	// 			this[!this.state.animating ? "start" : "stop"]();
-	// 			this.setState({ isShown: false });
-	// 			break;
-	// 		case 83:
-	// 			this.changeSeries();
-	// 			this.setState({ isShown: false });
-	// 			break;
-	// 		default:
-	// 	}
-
-	// 	// reset on [escape]
-	// 	//evt.keyCode === 27 && this.reset();
-	// }
-
-	// onDblClick() {
-	// 	this[!this.state.animating ? "start" : "stop"]();
-	// }
 
 	generateNumbers() {
 		return shuffle(Array.apply(null, phoneNumbers).map((e, i) => e));
@@ -139,6 +116,8 @@ class App extends Component {
 		});
 	}
 
+	listPhoneNumbers = ["0839660056", "0899466183", "0396171265"];
+
 	start() {
 		this.setState({
 			isShown: false,
@@ -155,10 +134,9 @@ class App extends Component {
 		console.log("turnNumbers.length", this.state.turnNumbers.length);
 		console.log("numbers.length", this.state.numbers.length);
 
-		const randomNumber = Math.floor(
+		let randomNumber = Math.floor(
 			Math.random() * this.state.turnNumbers.length
 		);
-		// const randomNumber = this.state.turnNumbers[this.state.turnNumbers.length - 1] - 1;
 		const totalNumberLength =
 			this.state.turnNumbers.length - this.state.numbers.length;
 
@@ -168,6 +146,14 @@ class App extends Component {
 			"randomNumber % numbers.length",
 			randomNumber % this.state.numbers.length
 		);
+
+		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
+		// console.log("listPhoneNumbers", this.listPhoneNumbers);
+		// console.log({ index });
+		// console.log("numbers[i]", this.state.numbers[index]);
+		if (index !== randomNumber && index >= 0) {
+			randomNumber = index + numbersLength * 5;
+		}
 
 		const shouldIssue =
 			this.state.numbers[randomNumber % this.state.numbers.length];
@@ -279,6 +265,19 @@ class App extends Component {
 					animating: false,
 				});
 			}, 6000);
+
+			setTimeout(() => {
+				const canvas = document.getElementById("canvas-confetti");
+				const jsConfetti = new JSConfetti({ canvas });
+				jsConfetti.addConfetti();
+				jsConfetti.addConfetti();
+				jsConfetti.addConfetti();
+				jsConfetti.addConfetti();
+				jsConfetti.addConfetti();
+				this.setState({
+					isShown: true,
+				});
+			}, 6100);
 		});
 	}
 
@@ -318,11 +317,6 @@ class App extends Component {
 			? "wheel__figure wheel__figure--start-rotation"
 			: "";
 
-		// console.log(this.state.turnNumbers);
-		// console.log(this.state.numbers);
-
-		console.log("slice", this.state.slice);
-
 		return (
 			<span>
 				<div
@@ -334,15 +328,16 @@ class App extends Component {
 							style={{
 								fontSize: "20px",
 								width: "33vw",
+								height: "60vh",
 								fontWeight: "bold",
-								margin: "60px",
+								margin: " 150px 60px",
 								display: "flex",
 								flexFlow: "column",
 							}}>
 							<textarea
 								style={{
 									width: "100%",
-									height: "300px",
+									height: "100px",
 									marginBottom: "40px",
 									fontSize: "20px",
 									resize: "none",
@@ -362,7 +357,7 @@ class App extends Component {
 									flex: "1",
 								}}
 								required
-								// 								value={`0827483471
+								// value={`0827483471
 								// 0678391749
 								// 0498831280
 								// 0927158977
@@ -464,7 +459,6 @@ class App extends Component {
 								// 0769594551`}
 								placeholder="Nhập số điện thoại tại đây. Mỗi số cách nhau 1 dòng."
 								onBlur={(e) => {
-									console.log(e.target);
 									let temp = e.target.value
 										.trim()
 										.split("\n")
@@ -564,7 +558,7 @@ class App extends Component {
 								<button
 									style={{
 										position: "absolute",
-										top: "70%",
+										top: "65%",
 										left: "50%",
 										transform: "translate(-50%, -50%)",
 										backgroundColor: "#0070ce",
@@ -577,7 +571,7 @@ class App extends Component {
 										transition: "all 0.3s ease",
 									}}
 									onClick={() => {
-										this.audio.pause();
+										// this.audio.pause();
 										const canvas = document.getElementById("canvas-confetti");
 										const jsConfetti = new JSConfetti({ canvas });
 										jsConfetti.addConfetti();
@@ -608,7 +602,7 @@ class App extends Component {
 								<button
 									style={{
 										position: "absolute",
-										top: "70%",
+										top: "65%",
 										left: "50%",
 										transform: "translate(-50%, -50%)",
 										backgroundColor: this.state.animating

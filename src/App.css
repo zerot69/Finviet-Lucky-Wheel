@@ -16,7 +16,7 @@
 
 .App[data-serie="0"] {
 	background-color: #ffe7ab;
-	background-image: url("../public/bg.png");
+	background-image: url("../public/bg-1.png");
 }
 
 .App[data-serie="1"] {
