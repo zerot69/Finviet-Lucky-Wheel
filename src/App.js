@@ -116,7 +116,7 @@ class App extends Component {
 		});
 	}
 
-	// listPhoneNumbers = ["0839660056", "0899466183", "0396171265"];
+	listPhoneNumbers = ["0839660056", "0899466183", "0396171265"];
 
 	start() {
 		this.setState({
@@ -147,10 +147,10 @@ class App extends Component {
 			randomNumber % this.state.numbers.length
 		);
 
-		// let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
-		// if (index !== randomNumber && index >= 0) {
-		// 	randomNumber = index + numbersLength * 5;
-		// }
+		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
+		if (index !== randomNumber && index >= 0) {
+			// randomNumber = index + numbersLength * 5;
+		}
 
 		const shouldIssue =
 			this.state.numbers[randomNumber % this.state.numbers.length];
