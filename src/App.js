@@ -147,13 +147,10 @@ class App extends Component {
 			randomNumber % this.state.numbers.length
 		);
 
-		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
-		// console.log("listPhoneNumbers", this.listPhoneNumbers);
-		// console.log({ index });
-		// console.log("numbers[i]", this.state.numbers[index]);
-		if (index !== randomNumber && index >= 0) {
-			randomNumber = index + numbersLength * 5;
-		}
+		// let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
+		// if (index !== randomNumber && index >= 0) {
+		// 	randomNumber = index + numbersLength * 5;
+		// }
 
 		const shouldIssue =
 			this.state.numbers[randomNumber % this.state.numbers.length];
