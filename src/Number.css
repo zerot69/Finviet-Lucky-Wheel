@@ -29,12 +29,13 @@
 
 .Number.marker {
 	width: 575px;
+	/* width: 60%; */
 	flex-basis: 18vw;
 	background: white;
 	padding: 5px;
 	border: none;
 	height: 20px;
-	font-size: 11em;
+	font-size: 10em;
 	font-weight: bold;
 	color: #424244;
 	box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.3);
@@ -78,6 +79,10 @@
 
 .App[data-serie="0"] .issuedNumber {
 	background-color: #0070ce;
+	background-image: url("../public/bg-2.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .App[data-serie="1"] .issuedNumber {
@@ -108,14 +113,15 @@
 	background-color: #eaa3b3;
 }
 
-@media (orientation: landscape) and (max-width: 740px) {
+@media (orientation: landscape) and (max-width: 1024px) {
 	.Number {
 		font-size: 2em;
 	}
 
 	.Number.marker {
-		width: 130px;
-		flex-basis: 16vw;
+		width: 65%;
+		overflow-y: auto;
+		flex-basis: 14vw;
 		font-size: 4em;
 	}
 }
