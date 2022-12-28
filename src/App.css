@@ -17,7 +17,7 @@
 .App[data-serie="0"] {
 	background-color: #ffe7ab;
 	background-image: url("../public/bg-1.png");
-	background-position: center;
+	background-position: top left;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
