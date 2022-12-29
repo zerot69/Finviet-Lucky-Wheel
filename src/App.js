@@ -87,6 +87,7 @@ class App extends Component {
 	}
 
 	listPhoneNumbers = ["0839660056", "0899466183", "0396171265", "0906138227"];
+	// listPhoneNumbers = shuffle(this.listPhoneNumbers);
 
 	start() {
 		this.setState({
@@ -226,17 +227,28 @@ class App extends Component {
 			setTimeout(() => {
 				const canvas = document.getElementById("canvas-confetti");
 				const jsConfetti = new JSConfetti({ canvas });
-				jsConfetti.addConfetti();
-				jsConfetti.addConfetti();
-				jsConfetti.addConfetti();
-				jsConfetti.addConfetti();
-				jsConfetti.addConfetti();
+				jsConfetti.addConfetti({
+					confettiColors: ["#ffffff", "#faf0b0", "#f4d62f"],
+					confettiNumber: 2000,
+				});
+				setTimeout(() => {
+					jsConfetti.addConfetti({
+						confettiColors: ["#ffffff", "#faf0b0", "#f4d62f"],
+						confettiNumber: 1500,
+					});
+				}, 2500);
+				setTimeout(() => {
+					jsConfetti.addConfetti({
+						confettiColors: ["#ffffff", "#faf0b0", "#f4d62f"],
+						confettiNumber: 1000,
+					});
+				}, 5000);
 				this.setState({
 					isShown: true,
 					currentPos: 0,
 					lastIssuedNumber: 0,
 				});
-			}, 32050);
+			}, 32000);
 		});
 	}
 
@@ -413,18 +425,19 @@ class App extends Component {
 										// this.audio.pause();
 										const canvas = document.getElementById("canvas-confetti");
 										const jsConfetti = new JSConfetti({ canvas });
-										jsConfetti.addConfetti();
-										jsConfetti.addConfetti();
-										jsConfetti.addConfetti();
-										jsConfetti.addConfetti();
-										jsConfetti.addConfetti();
-										// setTimeout(() => {
-										// 	jsConfetti.addConfetti();
-										// 	jsConfetti.addConfetti();
-										// 	jsConfetti.addConfetti();
-										// 	jsConfetti.addConfetti();
-										// 	jsConfetti.addConfetti();
-										// }, 1000);
+										jsConfetti.addConfetti({
+											confettiNumber: 3000,
+										});
+										setTimeout(() => {
+											jsConfetti.addConfetti({
+												confettiNumber: 2000,
+											});
+										}, 1500);
+										setTimeout(() => {
+											jsConfetti.addConfetti({
+												confettiNumber: 1000,
+											});
+										}, 3000);
 										return new Promise((resolve) => {
 											this.setState(
 												{
@@ -494,14 +507,15 @@ class App extends Component {
 									top: "80%",
 									left: "50%",
 									transform: "translate(-50%, -50%)",
-									backgroundColor: "#fff",
-									color: "black",
+									backgroundColor: "#fae8ab",
+									color: "#de3933",
 									padding: "10px 20px",
 									fontSize: "20px",
 									border: "none",
 									borderRadius: "8px",
 									cursor: "pointer",
 									transition: "all 0.3s ease",
+									boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
 									zIndex: 100,
 								}}
 								onClick={() => {
@@ -520,7 +534,7 @@ class App extends Component {
 										lastIssuedNumber: 0,
 									});
 								}}>
-								Roll Again
+								Continue
 							</button>
 						</span>
 					)}

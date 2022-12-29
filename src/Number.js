@@ -8,7 +8,7 @@ export default function Number({
 	className,
 	slice,
 }) {
-	let cn = `Number ${className || ""}`;
+	let classNameNumber = `Number ${className || ""}`;
 
 	let currentPosition = pos + offset;
 	const number = wheelNumbers[currentPosition];
@@ -19,7 +19,7 @@ export default function Number({
 	return (
 		<div
 			// style={{ fontSize: "10em" }}
-			className={cn}>
+			className={classNameNumber}>
 			{number
 				? `${number.slice(0, 4)} ${number.slice(4, 7)} ${number.slice(
 						7,
