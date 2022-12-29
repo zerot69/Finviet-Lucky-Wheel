@@ -92,6 +92,7 @@ class App extends Component {
 		this.setState({
 			isShown: false,
 			currentPos: 0,
+			lastIssuedNumber: 0,
 			slice: 3,
 			lastIssuedNumber: 0,
 			// turnNumbers: this.generateTurnsNumbers(this.state.numbers),
@@ -234,6 +235,7 @@ class App extends Component {
 				this.setState({
 					isShown: true,
 					currentPos: 0,
+					lastIssuedNumber: 0,
 					lastIssuedNumber: 0,
 				});
 			}, 32050);
