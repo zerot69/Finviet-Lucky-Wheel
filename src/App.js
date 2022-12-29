@@ -121,7 +121,7 @@ class App extends Component {
 
 		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
 		if (index !== randomNumber && index >= 0) {
-			randomNumber = index + numbersLength * 2;
+			// randomNumber = index + numbersLength * 2;
 		}
 
 		const shouldIssue =
