@@ -105,8 +105,8 @@
     animation-iteration-count: 1, 10, 1 */
 
 	animation: wheelRotationStart 4s ease-in, wheelRotationStart 2s linear 4s,
-		wheelRotationStart 4s cubic-bezier(0.5, 0.99, 0.9, 1) 18s;
-	animation-iteration-count: 1, 8, 1;
+		wheelRotationStart 4.5s cubic-bezier(0.5, 0.99, 0.9, 1) 36s;
+	animation-iteration-count: 1, 18, 1;
 }
 
 @keyframes wheelRotationStart {
