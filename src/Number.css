@@ -53,7 +53,7 @@
 	background-clip: border-box;
 	background-size: 200% auto;
 	animation: textclip 2s linear infinite;
-	text-shadow: rgba(0, 0, 0, 0.4) 0 0 15px;
+	text-shadow: rgba(0, 0, 0, 0.6) 0 0 15px;
 }
 
 .Number.hidden {
@@ -92,9 +92,9 @@
 	background-image: linear-gradient(
 		-225deg,
 		#ffffff 0%,
-		#faf0b0 25%,
+		#faf0b0 33%,
 		#f4d62f 50%,
-		#faf0b0 75%,
+		#faf0b0 67%,
 		#ffffff 100%
 	);
 	background-size: auto auto;
@@ -108,8 +108,8 @@
 	animation: textclip 2s linear infinite;
 	display: inline-block;
 	font-size: 10em;
-	-webkit-filter: drop-shadow(0 0 100px black);
-	filter: drop-shadow(0 0 100px black);
+	-webkit-filter: drop-shadow(0 0 80px black);
+	filter: drop-shadow(0 0 80px black);
 }
 
 .issuedNumber--visible {
