@@ -43,11 +43,11 @@
 	text-overflow: ellipsis;
 	background-image: linear-gradient(
 		90deg,
-		#ffe44d 0%,
-		#faf0b0 25%,
-		#ffec81 50%,
-		#faf0b0 75%,
-		#ffe44d 100%
+		#faf0b0 0%,
+		#fffbe1 33%,
+		#fffdf1 50%,
+		#fffbe1 67%,
+		#faf0b0 100%
 	);
 	background-size: auto auto;
 	background-clip: border-box;
