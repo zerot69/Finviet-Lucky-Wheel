@@ -207,23 +207,23 @@ class App extends Component {
 					},
 					resolve
 				);
-			}, 10000);
+			}, 5000);
 			setTimeout(() => {
 				this.setState({
 					slice: this.state.slice - 1,
 				});
-			}, 20000);
+			}, 10000);
 			setTimeout(() => {
 				this.setState({
 					slice: this.state.slice - 1,
 					showResult: true,
 				});
-			}, 30000);
+			}, 15000);
 			setTimeout(() => {
 				this.setState({
 					animating: false,
 				});
-			}, 32000);
+			}, 17000);
 			setTimeout(() => {
 				const canvas = document.getElementById("canvas-confetti");
 				const jsConfetti = new JSConfetti({ canvas });
@@ -248,7 +248,7 @@ class App extends Component {
 					currentPos: 0,
 					lastIssuedNumber: 0,
 				});
-			}, 32000);
+			}, 17100);
 		});
 	}
 
