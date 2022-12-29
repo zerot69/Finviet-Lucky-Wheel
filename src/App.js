@@ -309,12 +309,16 @@ class App extends Component {
 									flex: "1",
 								}}
 								required
-								placeholder="Nhập số điện thoại tại đây. Mỗi số cách nhau 1 dòng."
+								placeholder={`Nhập số điện thoại tại đây. Mỗi số cách nhau 1 dòng. Ví dụ:
+0901234567
+0909090909
+...`}
 								onBlur={(e) => {
 									let temp = e.target.value
 										.trim()
 										.replace(/ /g, "")
-										.split("\n")
+										.replace(/-/g, "")
+										.split(/[\r\n]+/)
 										.map((n) => n);
 									this.setState({
 										tempArray: temp,
