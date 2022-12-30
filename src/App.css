@@ -22,34 +22,6 @@
 	background-size: cover;
 }
 
-.App[data-serie="1"] {
-	background-color: #53aee3;
-}
-
-.App[data-serie="2"] {
-	background-color: #75c482;
-}
-
-.App[data-serie="3"] {
-	background-color: #f8ef3c;
-}
-
-.App[data-serie="4"] {
-	background-color: #ff9900;
-}
-
-.App[data-serie="5"] {
-	background-color: #ef5e67;
-}
-
-.App[data-serie="6"] {
-	background-color: #c05aa3;
-}
-
-.App[data-serie="7"] {
-	background-color: #eaa3b3;
-}
-
 .numbers {
 	position: relative;
 	display: flex;
@@ -59,22 +31,6 @@
 	text-align: right;
 	width: 40%;
 	flex-direction: column-reverse;
-}
-
-.timer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #eee;
-	z-index: -1;
-	transform-origin: left;
-}
-
-.currentNumber {
-	font-size: 0.2em;
-	background-color: red;
 }
 
 .wheel__container {
