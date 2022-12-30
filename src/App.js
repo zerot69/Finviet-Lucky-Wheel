@@ -41,7 +41,7 @@ class App extends Component {
 			isShown: false,
 			series: 0,
 			tempArray: [],
-			slice: 3,
+			slice: 6,
 		};
 
 		this.animate = this.animate.bind(this);
@@ -79,7 +79,7 @@ class App extends Component {
 					showResult: false,
 					isShown: false,
 					tempArray: [],
-					slice: 3,
+					slice: 6,
 				},
 				resolve
 			);
@@ -94,10 +94,10 @@ class App extends Component {
 			isShown: false,
 			currentPos: 0,
 			lastIssuedNumber: 0,
-			slice: 3,
+			slice: 6,
 			// turnNumbers: this.generateTurnsNumbers(this.state.numbers),
 		});
-		const extractionDuration = 1000;
+		const extractionDuration = 10000;
 		if (this.state.animating) return;
 
 		const numbersLength = this.state.numbers.length;
@@ -212,7 +212,22 @@ class App extends Component {
 				this.setState({
 					slice: this.state.slice - 1,
 				});
-			}, 10000);
+			}, 5500);
+			setTimeout(() => {
+				this.setState({
+					slice: this.state.slice - 1,
+				});
+			}, 6000);
+			setTimeout(() => {
+				this.setState({
+					slice: this.state.slice - 1,
+				});
+			}, 11000);
+			setTimeout(() => {
+				this.setState({
+					slice: this.state.slice - 1,
+				});
+			}, 12500);
 			setTimeout(() => {
 				this.setState({
 					slice: this.state.slice - 1,
@@ -223,7 +238,7 @@ class App extends Component {
 				this.setState({
 					animating: false,
 				});
-			}, 17000);
+			}, 18000);
 			setTimeout(() => {
 				const canvas = document.getElementById("canvas-confetti");
 				const jsConfetti = new JSConfetti({ canvas });
@@ -248,7 +263,7 @@ class App extends Component {
 					currentPos: 0,
 					lastIssuedNumber: 0,
 				});
-			}, 17100);
+			}, 18100);
 		});
 	}
 
@@ -527,7 +542,7 @@ class App extends Component {
 									this.setState({
 										isShown: false,
 										showResult: false,
-										slice: 3,
+										slice: 6,
 										numbers: this.state.numbers.filter(
 											(e, i) => e !== this.state.resultNumber
 										),
