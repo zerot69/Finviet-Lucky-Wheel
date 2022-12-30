@@ -62,30 +62,6 @@ class App extends Component {
 		return numbers.concat(numbers, numbers);
 	}
 
-	reset() {
-		return new Promise((resolve, reject) => {
-			const numbers = this.generateNumbers();
-			const turnNumbers = this.generateTurnsNumbers(numbers);
-
-			this.setState(
-				{
-					numbers,
-					turnNumbers,
-					issuedNumber: shuffle(numbers),
-					animating: false,
-					animationPos: 0,
-					currentPos: 0,
-					lastIssuedNumber: 0,
-					showResult: false,
-					isShown: false,
-					tempArray: [],
-					slice: 6,
-				},
-				resolve
-			);
-		});
-	}
-
 	// listPhoneNumbers = ["0839660056", "0899466183", "0396171265", "0906138227"];
 	// listPhoneNumbers = shuffle(this.listPhoneNumbers);
 	listPhoneNumbers = ["0839660056"];
