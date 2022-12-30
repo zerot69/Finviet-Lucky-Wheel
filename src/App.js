@@ -121,8 +121,7 @@ class App extends Component {
 
 		const random = Math.floor(Math.random() * 10);
 
-		console.log({ random });
-		console.log("this.listPhoneNumbers", this.listPhoneNumbers);
+		// console.log({ random });
 
 		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
 		if (index !== randomNumber && index >= 0 && random >= 7) {
@@ -242,6 +241,7 @@ class App extends Component {
 				});
 			}, 18000);
 			setTimeout(() => {
+				this.audio.pause();
 				const canvas = document.getElementById("canvas-confetti");
 				const jsConfetti = new JSConfetti({ canvas });
 				jsConfetti.addConfetti({
