@@ -92,9 +92,9 @@
 	-webkit-text-fill-color: transparent;
 	animation: textclip 2s linear infinite;
 	display: inline-block;
-	font-size: 10em;
 	-webkit-filter: drop-shadow(0 0 100px black);
 	filter: drop-shadow(0 0 100px black);
+	font-size: 9em;
 }
 
 .issuedNumber--visible {
@@ -120,6 +120,12 @@
 		overflow-y: auto;
 		flex-basis: 14vw;
 		font-size: 4em;
+	}
+}
+
+@media (orientation: landscape) and (max-width: 1440px) {
+	.issuedNumber span {
+		font-size: 10vw;
 	}
 }
 
