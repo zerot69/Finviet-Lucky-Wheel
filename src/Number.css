@@ -36,8 +36,8 @@
 	height: 20px;
 	font-size: 10em;
 	font-weight: bold;
-	color: #de3933;
-	/* color: #424244; */
+	/* color: #0070ce; */
+	color: #424244;
 	box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
 	text-overflow: ellipsis;

@@ -97,7 +97,7 @@ class App extends Component {
 			slice: 3,
 			// turnNumbers: this.generateTurnsNumbers(this.state.numbers),
 		});
-		const extractionDuration = 10000;
+		const extractionDuration = 1000;
 		if (this.state.animating) return;
 
 		const numbersLength = this.state.numbers.length;
@@ -508,7 +508,7 @@ class App extends Component {
 							<button
 								style={{
 									position: "absolute",
-									top: "80%",
+									top: "90%",
 									left: "50%",
 									transform: "translate(-50%, -50%)",
 									backgroundColor: "#fae8ab",
@@ -519,7 +519,7 @@ class App extends Component {
 									borderRadius: "8px",
 									cursor: "pointer",
 									transition: "all 0.3s ease",
-									boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
+									boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.5)",
 									zIndex: 100,
 								}}
 								onClick={() => {
