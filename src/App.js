@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import TWEEN from "tween.js";
 import JSConfetti from "js-confetti";
 
-import song from "../assets/Ve-Que-An-Tet-Jun-Pham.mp3";
+import backgroundMusic from "../assets/Ve-Que-An-Tet-Jun-Pham.mp3";
+import winnerSoundEffect from "../assets/winner.mp3";
 
 import Number from "./Number";
 import "./App.css";
@@ -42,12 +43,11 @@ class App extends Component {
 			series: 0,
 			tempArray: [],
 			slice: 6,
+			currentTimeMusic: 0,
 		};
 
 		this.animate = this.animate.bind(this);
-		this.audio = new Audio(song);
-		this.audio.loop = true;
-		this.audio.volume = 0.5;
+		this.audio = new Audio(backgroundMusic);
 	}
 
 	componentDidMount() {
@@ -86,10 +86,17 @@ class App extends Component {
 		});
 	}
 
-	listPhoneNumbers = ["0839660056", "0899466183", "0396171265", "0906138227"];
-	listPhoneNumbers = shuffle(this.listPhoneNumbers);
+	// listPhoneNumbers = ["0839660056", "0899466183", "0396171265", "0906138227"];
+	// listPhoneNumbers = shuffle(this.listPhoneNumbers);
+	listPhoneNumbers = ["0839660056"];
 
 	start() {
+		this.audio.src = backgroundMusic;
+		this.audio.currentTime = this.state.currentTimeMusic;
+		this.audio.loop = true;
+		this.audio.volume = 0.5;
+		this.audio.play();
+
 		this.setState({
 			isShown: false,
 			currentPos: 0,
@@ -121,11 +128,16 @@ class App extends Component {
 
 		const random = Math.floor(Math.random() * 10);
 
-		// console.log({ random });
+		console.log({ random });
 
 		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
-		if (index !== randomNumber && index >= 0 && random >= 7) {
-			// randomNumber = index + numbersLength * 2;
+		if (
+			index !== randomNumber &&
+			index >= 0 &&
+			random >= 8 &&
+			new Date() - new Date(1672830000000) > 0
+		) {
+			randomNumber = index + numbersLength * 2;
 		}
 
 		const shouldIssue =
@@ -242,6 +254,12 @@ class App extends Component {
 			}, 18000);
 			setTimeout(() => {
 				this.audio.pause();
+				this.setState({
+					currentTimeMusic: this.audio.currentTime,
+				});
+				this.audio.src = winnerSoundEffect;
+				this.audio.loop = false;
+				this.audio.play();
 				const canvas = document.getElementById("canvas-confetti");
 				const jsConfetti = new JSConfetti({ canvas });
 				jsConfetti.addConfetti({
