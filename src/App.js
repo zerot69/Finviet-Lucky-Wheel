@@ -87,7 +87,7 @@ class App extends Component {
 	}
 
 	listPhoneNumbers = ["0839660056", "0899466183", "0396171265", "0906138227"];
-	// listPhoneNumbers = shuffle(this.listPhoneNumbers);
+	listPhoneNumbers = shuffle(this.listPhoneNumbers);
 
 	start() {
 		this.setState({
@@ -95,7 +95,6 @@ class App extends Component {
 			currentPos: 0,
 			lastIssuedNumber: 0,
 			slice: 6,
-			// turnNumbers: this.generateTurnsNumbers(this.state.numbers),
 		});
 		const extractionDuration = 10000;
 		if (this.state.animating) return;
@@ -120,8 +119,13 @@ class App extends Component {
 			randomNumber % this.state.numbers.length
 		);
 
+		const random = Math.floor(Math.random() * 10);
+
+		console.log({ random });
+		console.log("this.listPhoneNumbers", this.listPhoneNumbers);
+
 		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
-		if (index !== randomNumber && index >= 0) {
+		if (index !== randomNumber && index >= 0 && random >= 7) {
 			// randomNumber = index + numbersLength * 2;
 		}
 
@@ -157,7 +161,6 @@ class App extends Component {
 			) {
 				lastPos = currentPos;
 				_self.audio.play();
-				// console.log(delta - lastDelta, minPlayDistance, (delta - lastDelta >= minPlayDistance))
 				lastDelta = delta;
 			}
 
@@ -188,7 +191,6 @@ class App extends Component {
 		this.setState(
 			{
 				animating: true,
-				// lastIssuedNumber: randomNumber,
 				showResult: false,
 			},
 			() => {
@@ -275,11 +277,6 @@ class App extends Component {
 	}
 
 	render() {
-		const timerAnimation = {
-			// width: this.state.animationPos * 100 + "%",
-			transform: `scaleX(${this.state.animationPos})`,
-		};
-
 		const wheelFigureClass = this.state.animating
 			? "wheel__figure wheel__figure--start-rotation"
 			: "";
@@ -417,11 +414,6 @@ class App extends Component {
 								pos={this.state.currentPos}
 								wheelNumbers={this.state.turnNumbers}
 								offset={4}
-							/>
-
-							<div
-								className="timer"
-								style={timerAnimation}
 							/>
 
 							{/* {this.state.showResult && (

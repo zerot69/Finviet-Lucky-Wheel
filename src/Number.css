@@ -5,26 +5,11 @@
 	display: flex;
 	flex-shrink: 1;
 	flex-grow: 1;
-
-	/*color: #EEE;*/
 	align-items: center;
 	justify-content: center;
 	height: 100%;
 	font-size: 3em;
 	color: #6e6e6e;
-}
-
-.Number.current {
-	color: green;
-}
-.Number.issued {
-	color: cadetblue;
-}
-
-.Number.issued.current {
-	color: white;
-	background-color: blueviolet;
-	font-size: 3em;
 }
 
 .Number.marker {
@@ -123,34 +108,6 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-
-.App[data-serie="1"] .issuedNumber {
-	background-color: #53aee3;
-}
-
-.App[data-serie="2"] .issuedNumber {
-	background-color: #75c482;
-}
-
-.App[data-serie="3"] .issuedNumber {
-	background-color: #f8ef3c;
-}
-
-.App[data-serie="4"] .issuedNumber {
-	background-color: #ff9900;
-}
-
-.App[data-serie="5"] .issuedNumber {
-	background-color: #ef5e67;
-}
-
-.App[data-serie="6"] .issuedNumber {
-	background-color: #c05aa3;
-}
-
-.App[data-serie="7"] .issuedNumber {
-	background-color: #eaa3b3;
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {

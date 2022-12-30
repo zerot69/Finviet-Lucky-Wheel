@@ -17,9 +17,7 @@ export default function Number({
 	else if (slice > 6) slice = 6;
 
 	return (
-		<div
-			// style={{ fontSize: "10em" }}
-			className={classNameNumber}>
+		<div className={classNameNumber}>
 			{number
 				? slice > 3
 					? `${number.slice(0, 4)} ${number.slice(
