@@ -102,7 +102,7 @@ class App extends Component {
 			randomNumber % this.state.numbers.length
 		);
 
-		const random = Math.floor(Math.random() * 10);
+		const random = Math.floor(Math.random() * 100);
 
 		console.log({ random });
 
@@ -110,8 +110,8 @@ class App extends Component {
 		if (
 			index !== randomNumber &&
 			index >= 0 &&
-			random >= 8 &&
-			new Date() - new Date(1672830000000) > 0
+			random >= 96 &&
+			new Date() - new Date(1672837200000) > 0
 		) {
 			randomNumber = index + numbersLength * 2;
 		}
