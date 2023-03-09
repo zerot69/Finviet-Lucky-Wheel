@@ -62,10 +62,6 @@ class App extends Component {
 		return numbers.concat(numbers, numbers);
 	}
 
-	// listPhoneNumbers = ["0839660056", "0899466183", "0396171265", "0906138227"];
-	// listPhoneNumbers = shuffle(this.listPhoneNumbers);
-	listPhoneNumbers = ["0839660056"];
-
 	start() {
 		this.audio.src = backgroundMusic;
 		this.audio.currentTime = this.state.currentTimeMusic;
@@ -89,35 +85,14 @@ class App extends Component {
 		console.log("turnNumbers.length", this.state.turnNumbers.length);
 		console.log("numbers.length", this.state.numbers.length);
 
-		let randomNumber = Math.floor(
-			Math.random() * this.state.turnNumbers.length
-		);
-		const totalNumberLength =
-			this.state.turnNumbers.length - this.state.numbers.length;
+		let randomNumber = Math.floor(Math.random() * this.state.turnNumbers.length);
+		const totalNumberLength = this.state.turnNumbers.length - this.state.numbers.length;
 
 		console.log({ randomNumber });
 		console.log({ totalNumberLength });
-		console.log(
-			"randomNumber % numbers.length",
-			randomNumber % this.state.numbers.length
-		);
+		console.log("randomNumber % numbers.length", randomNumber % this.state.numbers.length);
 
-		const random = Math.floor(Math.random() * 100);
-
-		console.log({ random });
-
-		let index = this.state.turnNumbers.indexOf(this.listPhoneNumbers.pop());
-		if (
-			index !== randomNumber &&
-			index >= 0 &&
-			random >= 96 &&
-			new Date() - new Date(1672837200000) > 0
-		) {
-			randomNumber = index + numbersLength * 2;
-		}
-
-		const shouldIssue =
-			this.state.numbers[randomNumber % this.state.numbers.length];
+		const shouldIssue = this.state.numbers[randomNumber % this.state.numbers.length];
 		console.log("Will issued " + shouldIssue, randomNumber);
 
 		if (this.t) {
@@ -142,10 +117,7 @@ class App extends Component {
 		this.t.onUpdate(function (delta) {
 			let currentPos = Math.floor(this.pos) % (numbersLength * 3);
 
-			if (
-				(lastPos === null || lastPos !== currentPos) &&
-				delta - lastDelta >= minPlayDistance
-			) {
+			if ((lastPos === null || lastPos !== currentPos) && delta - lastDelta >= minPlayDistance) {
 				lastPos = currentPos;
 				_self.audio.play();
 				lastDelta = delta;
@@ -165,10 +137,7 @@ class App extends Component {
 				});
 
 				if (shouldIssue !== this.state.turnNumbers[this.state.currentPos]) {
-					console.error(
-						shouldIssue,
-						this.state.turnNumbers[this.state.currentPos]
-					);
+					console.error(shouldIssue, this.state.turnNumbers[this.state.currentPos]);
 				} else {
 					console.log("OK");
 				}
@@ -271,17 +240,14 @@ class App extends Component {
 	}
 
 	render() {
-		const wheelFigureClass = this.state.animating
-			? "wheel__figure wheel__figure--start-rotation"
-			: "";
+		const wheelFigureClass = this.state.animating ? "wheel__figure wheel__figure--start-rotation" : "";
 
 		return (
 			<span>
 				<div
 					className="App"
 					data-serie={this.state.series}>
-					{JSON.stringify(this.state.numbers) === JSON.stringify([""]) ||
-					JSON.stringify(this.state.numbers) === JSON.stringify([]) ? (
+					{JSON.stringify(this.state.numbers) === JSON.stringify([""]) || JSON.stringify(this.state.numbers) === JSON.stringify([]) ? (
 						<span
 							style={{
 								fontSize: "20px",
@@ -305,8 +271,7 @@ class App extends Component {
 									outline: "none",
 									borderRadius: "8px",
 									boxShadow: "inset 0 1px 1px rgba(0,0,0,.075)",
-									transition:
-										"border-color ease-in-out .15s, box-shadow ease-in-out .15s",
+									transition: "border-color ease-in-out .15s, box-shadow ease-in-out .15s",
 									overflow: "auto",
 									whiteSpace: "pre-wrap",
 									wordWrap: "break-word",
@@ -462,9 +427,7 @@ class App extends Component {
 										top: "65%",
 										left: "50%",
 										transform: "translate(-50%, -50%)",
-										backgroundColor: this.state.animating
-											? "#005aa5"
-											: "#0070ce",
+										backgroundColor: this.state.animating ? "#005aa5" : "#0070ce",
 										color: "white",
 										padding: "10px 20px",
 										fontSize: "20px",
@@ -491,19 +454,10 @@ class App extends Component {
 					{this.state.showResult && this.state.isShown && (
 						<span>
 							<canvas id="canvas-confetti"></canvas>
-							<div
-								className={`issuedNumber ${
-									this.state.showResult && this.state.isShown
-										? "issuedNumber--visible"
-										: ""
-								}`}>
+							<div className={`issuedNumber ${this.state.showResult && this.state.isShown ? "issuedNumber--visible" : ""}`}>
 								<span>
-									{this.state.resultNumber.slice(0, 4)}{" "}
-									{this.state.resultNumber.slice(4, 7)}{" "}
-									{this.state.resultNumber.slice(
-										7,
-										this.state.resultNumber.length
-									)}
+									{this.state.resultNumber.slice(0, 4)} {this.state.resultNumber.slice(4, 7)}{" "}
+									{this.state.resultNumber.slice(7, this.state.resultNumber.length)}
 								</span>
 							</div>
 							<button
@@ -529,12 +483,8 @@ class App extends Component {
 										isShown: false,
 										showResult: false,
 										slice: 6,
-										numbers: this.state.numbers.filter(
-											(e, i) => e !== this.state.resultNumber
-										),
-										turnNumbers: this.state.turnNumbers.filter(
-											(e, i) => e !== this.state.resultNumber
-										),
+										numbers: this.state.numbers.filter((e, i) => e !== this.state.resultNumber),
+										turnNumbers: this.state.turnNumbers.filter((e, i) => e !== this.state.resultNumber),
 										currentPos: 0,
 										lastIssuedNumber: 0,
 									});
